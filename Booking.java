@@ -197,7 +197,7 @@ public class Booking {
                 
             } else if (choice1==6){
                 System.out.println("===== Struk Pembayaran =====");
-                System.out.println("Nama Pemesanan : ");
+                System.out.println("Nama Pemesanan : " + inputUsername);
                 System.out.println("Nama Film : "+ judulFilm[filmChoice]);
                 System.out.println("Tanggal : "+ tanggal );
                 System.out.println("Waktu : "+ waktuTayang[waktuPilihan]);
@@ -234,4 +234,3 @@ public class Booking {
         }
     }
 }
-
