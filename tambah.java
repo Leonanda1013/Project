@@ -1,5 +1,5 @@
  import java.util.Scanner;
-public class Booking {
+public class tambah {
    
 
 
