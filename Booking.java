@@ -7,8 +7,6 @@ public class Booking {
         String[] usernames = new String[100]; // Maksimal 100 pengguna
         String[] passwords = new String[100];
         int userCount = 0; // Jumlah pengguna yang terdaftar
-        int film;
-        int banyaktiket = 0;
         String[] judulFilm = {"ppp","Budi Pekerti","Saranjana"};
         int filmChoice = 0;
         int pesan = 0;
@@ -21,7 +19,7 @@ public class Booking {
 
         while (true) {
             System.out.println("===================================");
-            System.out.println(" Selamat Datang Di Cinema VinLuNa ");
+            System.out.println("\u001B[33m Selamat Datang Di Cinema VinLuNa \u001B[0m");
             System.out.println("===================================");
             System.out.println("1. Login");
             System.out.println("2. Registrasi");
@@ -47,7 +45,7 @@ public class Booking {
                 }
 
                 if (isAuthenticated) {
-                    System.out.println("Login berhasil!");
+                    System.out.println(" Login berhasil! ");
                     System.out.println("============================");
                     System.out.println("       PEMILIHAN FILM");
                     int[][] theater = new int[5][10]; // Teater dengan 5 baris dan 10 kursi
