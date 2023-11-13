@@ -20,9 +20,9 @@ public class Booking {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
-            System.out.println("===================================");
-            System.out.println(" Selamat Datang Di Cinema VinLuNa ");
-            System.out.println("===================================");
+            System.out.println("====================================");
+            System.out.println("| Selamat Datang Di Cinema VinLuNa |");
+            System.out.println("====================================");
             System.out.println("1. Login");
             System.out.println("2. Registrasi");
             System.out.println("3. Keluar");
