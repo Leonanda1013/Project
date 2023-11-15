@@ -52,17 +52,15 @@ public class Booking {
 
                     while (true) {
                         System.out.println("============================");
-                        System.out.println("1. Pilih Film");
-                        System.out.println("2. Pilih Tanggal dan waktu");
-                        System.out.println("3. Pilih Kursi");
-                        System.out.println("4. Pembayaran");
-                        System.out.println("5. Kembali ke login");
-                        System.out.println("6. Cetak Pembayaran");
+                        System.out.println("1. Beli Tiket");
+                        System.out.println("2. Beli Snack");
+                        System.out.println("3. Member");
                         System.out.println("============================");
                         System.out.print("Pilihan Anda: ");
-                        int choice1 = scanner.nextInt();
-
-                        if (choice1 == 1) {
+                        int choiceMenu = scanner.nextInt();
+                        
+                        if (choiceMenu == 1) {
+                            if (choice1 == 1) {
                             System.out.println("Daftar Film:");
                             System.out.println("1. Budi Pekerti");
                             System.out.println("2. Saranjana");
@@ -76,7 +74,7 @@ public class Booking {
                             } else {
                                 System.out.println("Pilihan tidak valid.");
                             }
-                        } else if (choice1 == 2) {
+                             } else if (choice1 == 2) {
                             System.out.println("Waktu Tayang untuk " + judulFilm[filmChoice] + ":");
                                 for (int i = 0; i < waktuTayang.length; i++) {
                                 System.out.println((i + 1) + ". " + waktuTayang[i]);
@@ -96,7 +94,7 @@ public class Booking {
                                 System.out.print("Masukkan tanggal (DD-MM-YYYY): ");
                                 tanggal = scanner.next();
             
-                        } else if (choice1 == 3) {
+                             } else if (choice1 == 3) {
                             System.out.println("Banyak Kursi yang dipesan:");
                             pesan = scanner.nextInt();
                             for (int l = 0; l < pesan; l++) {
@@ -131,7 +129,7 @@ public class Booking {
                                             System.out.println("Baris atau kursi tidak valid.");
                                             }
                                         }
-                        } else if (choice1 == 4) {
+                             } else if (choice1 == 4) {
                             System.out.println("Selamat datang di Sistem Pemesanan Tiket Bioskop!");
 
                                     // Pemilihan tanggal dan film
@@ -184,13 +182,13 @@ public class Booking {
                                 
                                     // Tiket berhasil dipesan
                                     System.out.println("Tiket Anda telah berhasil dipesan!");
-                        } else if (choice1==5){
+                             } else if (choice1==5){
                             System.out.println("");
                             System.out.println("");
                             System.out.println("===Login===");
                             break;
                 
-                        } else if (choice1==6){
+                             } else if (choice1==6){
                             System.out.println("===== Struk Pembayaran =====");
                             System.out.println("Nama Pemesanan : " + inputUsername);
                             System.out.println("Nama Film : "+ judulFilm[filmChoice]);
@@ -199,8 +197,13 @@ public class Booking {
                             System.out.println("Jumlah Tiket : "+ pesan);
                             System.out.println("");
                             break;
-            
-        }
+                        }
+                        } else if(choiceMenu == 2){
+                            
+                        } else if(choiceMenu == 3){
+
+                        } 
+                        
                      }
                 } else {
                     System.out.println("Login gagal. Nama pengguna atau kata sandi salah.");
@@ -224,7 +227,7 @@ public class Booking {
                 System.out.println("Terima kasih telah menggunakan aplikasi ini.");
                 break;
             } else {
-                
+                System.out.println("Pilihan tidak valid. Silakan pilih 1, 2, atau 3.");
             }
         }
     }
