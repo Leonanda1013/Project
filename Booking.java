@@ -19,13 +19,18 @@ public class Booking {
         System.out.println(" ");
 
         // Input film
+        while (true) {
         System.out.print("Pilih Film Yang Anda Inginkan: ");
         choiceFilm = sc.nextInt();
-
-        System.out.println(" ");
-        System.out.println("Film yang Anda pilih: " + judulFilm[choiceFilm - 1]);
-        System.out.println(" ");
-
+        if (choiceFilm == 2 || choiceFilm == 1) {
+            System.out.println(" ");
+            System.out.println("Film yang Anda pilih: " + judulFilm[choiceFilm - 1]);
+            System.out.println(" ");
+            break;
+        } else {
+            System.out.println("Film Tidak Tersedia");
+        }
+    }
         // Masuk fitur pemilihan tanggal dan waktu
         // Deklarasi variable
         int[] hari = new int[31];
@@ -36,29 +41,38 @@ public class Booking {
         int tahun = 2023;
         int adminInput = 4;
         int adminBulan = 12;
+        int inputTanggal;
 
         // Nanti nyambung dengan admin memasukkan tanggal berapa sekarang
         // Outputnya yang dikeluarkan akan sebanyak yang diinputkan admin
-        for (int i = 0; i <= 6; i++) {
-            hari[i] = i + 1;
-
-            System.out.println(hari[i] + " " + bulan[adminBulan - 1] + " " + tahun);
-
-            // Studio
-            for (int k = 0; k < 2; k++) {
-                System.out.println("Studio " + (k + 1));
-
-                // Waktu
-                // Deklarasi
+        for (int i = adminInput; i <= 6+adminInput; i++) {
+            hari[i] = i ;
+            
+            System.out.println(i + " " + bulan[adminBulan - 1] + " " + tahun);
+            
+            }
+        while (true) {
+            
+        System.out.println(" ");
+        System.out.print("Pilih Tanggal (hari): ");
+        inputTanggal = sc.nextInt();
+        if(inputTanggal!= hari[inputTanggal]){
+            System.out.println("tanggal yang anda masukkan tidak tersedia");
+        
+        } else{
+        System.out.println(" ");
+            break;
+    }
+}
+         // Studio
+            System.out.println("Studio 1:                         Studio 2: ");
                 int banyakJamAdmin = 4;
                 String[] jam = {"13.00", "16.00", "19.00", "21.00"};
-                System.out.println("Jam Penayangan: ");
+                System.out.println("Jam Penayangan:                   Jam Penayangan:");
                 for (int j = 0; j < banyakJamAdmin; j++) {
-                    System.out.println(jam[j]);
+                    System.out.println(jam[j] + "                             "+ jam[j]);
                 }
-            }
-        }
-    
+
         //Fitur Pemilihan Kursi
        // Deklarasi Variabel
         int ubahbaris = 0;
@@ -132,7 +146,8 @@ public class Booking {
                 }
             }
         }
-        } else {//jika
+        } else {//jika lebih dari dua
+            
             for (int k = 0; k < bnykKursi; k++) {
                 for (int i = 0; i < kursi.length; i++) {
                     for (int j = 0; j < kursi[i].length; j++) {
@@ -213,7 +228,32 @@ public class Booking {
 
 
         // Fitur Pembayaran
+        //Inisialisasi dan deklarasi variable
+        int tiket = 25000;
+        int hargaTotal = bnykKursi*tiket;
+        int metode;
+        int norek;
+        System.out.println(" ");
+        System.out.println("Selamat datang di menu pembayaran");
+        System.out.println(" ");
+
+        System.out.println("Total : "+hargaTotal);
+        System.out.println("Pilih metode pembayaran: ");
+        System.out.println("1. Transfer bank ");
+        System.out.println("2. Credit");
+        System.out.println("3. Cash");
+        metode = sc.nextInt();
+        if (metode == 1) {
+            System.out.println("");
+        } else if (metode == 2) {
+            System.out.println("Masukkan nomor rekening anda");
+            norek = sc.nextInt();
+        }else if(metode == 3){
+            System.out.println("");
+        }
+            
         
+
         }
 
 
