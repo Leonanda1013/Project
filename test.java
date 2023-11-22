@@ -127,9 +127,10 @@ public class test {
             System.out.println("Studio 1:                         Studio 2: ");
                 int banyakJamAdmin = 4;
                 String[] jam = {"13.00", "16.00", "19.00", "21.00"};
+                String[] jam2 = {"13.30", "16.30", "19.30", "21.30"};
                 System.out.println("Jam Penayangan:                   Jam Penayangan:");
                 for (int j = 0; j < banyakJamAdmin; j++) {
-                    System.out.println(jam[j] + "                             "+ jam[j]);
+                    System.out.println(jam[j] + "                             "+ jam2[j]);
                 }
 
         //Fitur Pemilihan Kursi
@@ -143,6 +144,7 @@ public class test {
             {"E1", "E2", "E3", "E4", "E5", "E6", "E7", "E8", "E9", "E10"},
         };
 
+        System.out.println();
         System.out.println("Banyak kursi: ");
         int bnykKursi = sc.nextInt();
 
