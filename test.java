@@ -343,9 +343,11 @@ public class test {
 
         System.out.print("Masukkan password: ");
         String password = sc.next();
+        System.out.println();
 
         userCredentials.put(inputUsername, password);
         System.out.println("Registrasi berhasil. Selamat datang, " + inputUsername + "!");
+        System.out.println();
         isLoggedIn = true;
         username = inputUsername;
     }
@@ -357,11 +359,13 @@ public class test {
         if (userCredentials.containsKey(inputUsername)) {
             System.out.print("Masukkan password: ");
             String inputPassword = sc.next();
+            System.out.println();
 
             String storedPassword = userCredentials.get(inputUsername);
 
             if (inputPassword.equals(storedPassword)) {
                 System.out.println("Login berhasil. Selamat datang, " + inputUsername + "!");
+                System.out.println();
                 isLoggedIn = true;
                 username = inputUsername;
             } else {
