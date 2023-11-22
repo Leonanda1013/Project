@@ -18,7 +18,9 @@ public class test {
             "  ╚═══╝  ╚═╝╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝  ╚═╝     ╚═════╝╚═╝╚═╝  ╚═══╝╚══════╝╚═╝     ╚═╝╚═╝  ╚═╝\r\n" + //
             "                                                                                                             ");
         while (true) {
-            System.out.println("Selamat datang di Vinluna Cinema");
+            System.out.println("██████████████████████████████████████");
+            System.out.println("██ Selamat datang di Vinluna Cinema ██");
+            System.out.println("██████████████████████████████████████");
 
             if (!isLoggedIn) {
                 showMenuBelumLogin();
