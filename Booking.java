@@ -42,6 +42,7 @@ public class Booking {
         int adminInput = 4;
         int adminBulan = 12;
         int inputTanggal;
+        int inputJam;
 
         // Nanti nyambung dengan admin memasukkan tanggal berapa sekarang
         // Outputnya yang dikeluarkan akan sebanyak yang diinputkan admin
@@ -70,11 +71,33 @@ public class Booking {
                 String[] jam = {"13.00", "16.00", "19.00", "21.00"};
                 System.out.println("Jam Penayangan:                   Jam Penayangan:");
                 for (int j = 0; j < banyakJamAdmin; j++) {
-                    System.out.println(jam[j] + "                             "+ jam[j]);
+                    System.out.println(j+1 +") "+ jam[j] + "                           " + (j+1) + ") "+ jam[j]);
                 }
-
+            
+            System.out.print("Pilih Studio(1/2): ");
+            int inpuStudio = sc.nextInt();
+            while (true) {
+            if (inpuStudio==1||inpuStudio==2) {
+               break;
+            }else {
+                 System.out.println("Studio tidak tersedia");
+                System.out.print("Pilih Studio(1/2): ");
+                inpuStudio = sc.nextInt();
+            }
+        }
+            System.out.print("Pilih jam yang anda inginkan(1-4): ");
+            inputJam = sc.nextInt();
+            while (true) {
+                if(inputJam>=1&&inputJam<=4){
+                    break;
+                }else{
+                    System.out.println("Pilihan Tidak Tersedia");
+                    System.out.print("Pilih jam yang anda inginkan(1-4): ");
+                    inputJam = sc.nextInt();
+                }
+            }
         //Fitur Pemilihan Kursi
-       // Deklarasi Variabel
+                // Deklarasi Variabel
         int ubahbaris = 0;
         String[][] kursi = {
             {"A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10"},
@@ -84,60 +107,101 @@ public class Booking {
             {"E1", "E2", "E3", "E4", "E5", "E6", "E7", "E8", "E9", "E10"},
         };
 
-        System.out.println("Banyak kursi: ");
-        int bnykKursi = sc.nextInt();
+        while (true) {
+            // Input jumlah kursi yang ingin diambil
+            System.out.print("Banyak kursi: ");
+            int bnykKursi = sc.nextInt();
 
-        if (bnykKursi <=2) {
-            for (int k = 0; k < bnykKursi; k++) {
-            for (int i = 0; i < kursi.length; i++) {
-                for (int j = 0; j < kursi[i].length; j++) {
-                    System.out.print(kursi[i][j] + " ");
+            // Pemilihan kursi jika jumlah kursi <= 2
+            if (bnykKursi <= 2) {
+                for (int k = 0; k < bnykKursi; k++) {
+                    // Menampilkan peta kursi
+                    tampilkanPetaKursi(kursi);
+
+                    // Input baris dan validasi
+                    String baris = inputBaris(sc);
+
+                    // Input kolom dan validasi
+                    int kolom = inputKolom(sc);
+
+                    // Reservasi kursi
+                    ubahbaris = baris.charAt(0) - 'A'; // Konversi baris ke indeks array
+                    kursi[ubahbaris][kolom] = " X";
                 }
-                System.out.println(); // Tambahkan baris baru setelah setiap baris kursi
-            }
 
-            // Input baris dan validasi
-            String baris;
-            do {
-                System.out.print("Baris(A-E): ");
-                baris = sc.next().toUpperCase(); // Ubah input menjadi uppercase
-                if (baris.matches("[A-E]")) {
-                    break;
-                } else {
-                    System.out.println("Input salah. Harap masukkan A, B, C, D, atau E.");
-                }
-            } while (true);
+                // Menampilkan peta kursi setelah pemilihan
+                tampilkanPetaKursi(kursi);
+            } else { // Pemilihan kursi jika jumlah kursi > 2
+                while (true) {
+                    // Menampilkan peta kursi
+                    tampilkanPetaKursi(kursi);
 
-            // Input kolom dan validasi
-            int kolom;
-            do {
-                System.out.print("Kolom(1-10): ");
-                kolom = sc.nextInt() - 1;
-                if (kolom >= 0 && kolom < 10) {
-                    if (kursi[baris.charAt(0) - 'A'][kolom].equals(" X")) {
-                        System.out.println("Kursi sudah diambil. Pilih kursi lain.");
-                        System.out.print("Baris(A-E): ");
-                        baris = sc.next().toUpperCase(); // Ubah input menjadi uppercase
-                        System.out.print("Kolom(1-10): ");
-                        kolom = sc.nextInt() - 1;
-                        if (baris.matches("[A-E]")) {
-                            break;
-                        } else {
-                            System.out.println("Input salah. Harap masukkan A, B, C, D, atau E.");
-                        }
-                    } else {
+                    // Input dan validasi baris awal
+                    String barisAwal = inputBaris(sc);
+
+                    // Input dan validasi kolom awal
+                    int kolomAwal = inputKolom(sc);
+
+                    // Input dan validasi baris akhir
+                    String barisAkhir = inputBaris(sc, barisAwal);
+
+                    // Input dan validasi kolom akhir
+                    int kolomAkhir = inputKolom(sc, kolomAwal);
+
+                    // Reservasi kursi pada blok
+                    reservasiBlokKursi(kursi, barisAwal, kolomAwal, barisAkhir, kolomAkhir);
+
+                    // Menampilkan peta kursi setelah reservasi
+                    tampilkanPetaKursi(kursi);
+
+                    // Keluar dari loop jika jumlah kursi sudah sesuai
+                    if (hitungJumlahKursiTerisi(kursi) >= bnykKursi) {
                         break;
                     }
-                } else {
-                    System.out.println("Input salah. Harap masukkan angka antara 1 dan 10.");
                 }
-            } while (true);
+            }
 
-            ubahbaris = baris.charAt(0) - 'A'; // Konversi baris ke indeks array
+            System.out.println("Apakah Kursi yang Anda Pilih Sudah Benar? (y/t) ");
+            String validasiKursi = sc.next();
+            if (validasiKursi.equalsIgnoreCase("y")) {
+                break;
+            } else if (validasiKursi.equalsIgnoreCase("t")) {
+                // Reset semua perubahan jika memilih kursi dibatalkan
+                ubahbaris = 0;
+                kursi = new String[][] {
+                    {"A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10"},
+                    {"B1", "B2", "B3", "B4", "B5", "B6", "B7", "B8", "B9", "B10"},
+                    {"C1", "C2", "C3", "C4", "C5", "C6", "C7", "C8", "C9", "C10"},
+                    {"D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "D9", "D10"},
+                    {"E1", "E2", "E3", "E4", "E5", "E6", "E7", "E8", "E9", "E10"},
+                };
+                continue;
+            } else {
+                System.out.println("Input salah. Silakan masukkan 'y' atau 't'.");
+                while (true) {
+                    System.out.println("Apakah Kursi yang Anda Pilih Sudah Benar? (y/t) ");
+                    validasiKursi = sc.next();
+                    if (validasiKursi.equalsIgnoreCase("y")||validasiKursi.equalsIgnoreCase("t")) {
+                        break;
+                    }
+                }
+            }
+            sc.close(); // Tambahkan penutupan scanner
+        }
 
-            kursi[ubahbaris][kolom] = " X";
 
-            if (k == bnykKursi - 1) {
+        //fitur pembyaran
+        System.out.println("Selamat datang di fitur pembayaran: ");
+
+        //Fitur cetak tiket
+        System.out.println(" ");
+
+        
+    }
+              
+    
+            // Method untuk menampilkan peta kursi
+            private static void tampilkanPetaKursi(String[][] kursi) {
                 for (int i = 0; i < kursi.length; i++) {
                     for (int j = 0; j < kursi[i].length; j++) {
                         System.out.print(kursi[i][j] + " ");
@@ -145,119 +209,94 @@ public class Booking {
                     System.out.println(); // Tambahkan baris baru setelah setiap baris kursi
                 }
             }
-        }
-        } else {//jika lebih dari dua
-            
-            for (int k = 0; k < bnykKursi; k++) {
-                for (int i = 0; i < kursi.length; i++) {
-                    for (int j = 0; j < kursi[i].length; j++) {
-                        System.out.print(kursi[i][j] + " ");
-                    }
-                    System.out.println(); // Tambahkan baris baru setelah setiap baris kursi
-                }
-
-                // Input baris awal dan validasi
-                String barisAwal;
+        
+            // Method untuk input dan validasi baris
+            private static String inputBaris(Scanner sc) {
+                String baris;
                 do {
-                    System.out.print("Baris Awal(A-E): ");
-                    barisAwal = sc.next().toUpperCase(); // Ubah input menjadi uppercase
-                    if (barisAwal.matches("[A-E]")) {
+                    System.out.print("Baris(A-E): ");
+                    baris = sc.next().toUpperCase(); // Ubah input menjadi uppercase
+                    if (baris.matches("[A-E]")) {
                         break;
                     } else {
                         System.out.println("Input salah. Harap masukkan A, B, C, D, atau E.");
                     }
                 } while (true);
-
-                // Input kolom awal dan validasi
-                int kolomAwal;
+                return baris;
+            }
+        
+            // Method untuk input dan validasi kolom
+            private static int inputKolom(Scanner sc) {
+                int kolom;
                 do {
-                    System.out.print("Kolom Awal(1-10): ");
-                    kolomAwal = sc.nextInt() - 1;
-                    if (kolomAwal >= 0 && kolomAwal < 10) {
+                    System.out.print("Kolom(1-10): ");
+                    kolom = sc.nextInt() - 1;
+                    if (kolom >= 0 && kolom < 10) {
                         break;
                     } else {
                         System.out.println("Input salah. Harap masukkan angka antara 1 dan 10.");
                     }
                 } while (true);
-
-                // Input baris akhir dan validasi
-                String barisAkhir;
+                return kolom;
+            }
+        
+            // Method untuk input dan validasi baris dengan batasan berdasarkan baris awal
+            private static String inputBaris(Scanner sc, String batasan) {
+                String baris;
                 do {
                     System.out.print("Baris Akhir(A-E): ");
-                    barisAkhir = sc.next().toUpperCase(); // Ubah input menjadi uppercase
-                    if (barisAkhir.matches("[A-E]") && barisAkhir.charAt(0) >= barisAwal.charAt(0)) {
+                    baris = sc.next().toUpperCase(); // Ubah input menjadi uppercase
+                    if (baris.matches("[A-E]") && baris.charAt(0) >= batasan.charAt(0)) {
                         break;
                     } else {
                         System.out.println("Input salah. Harap masukkan A, B, C, D, atau E, dan lebih besar atau sama dengan baris awal.");
                     }
                 } while (true);
-
-                // Input kolom akhir dan validasi
-                int kolomAkhir;
+                return baris;
+            }
+        
+            // Method untuk input dan validasi kolom dengan batasan berdasarkan kolom awal
+            private static int inputKolom(Scanner sc, int batasan) {
+                int kolom;
                 do {
                     System.out.print("Kolom Akhir(1-10): ");
-                    kolomAkhir = sc.nextInt() - 1;
-                    if (kolomAkhir >= 0 && kolomAkhir < 10 && kolomAkhir >= kolomAwal) {
+                    kolom = sc.nextInt() - 1;
+                    if (kolom >= 0 && kolom < 10 && kolom >= batasan) {
                         break;
                     } else {
                         System.out.println("Input salah. Harap masukkan angka antara 1 dan 10, dan lebih besar atau sama dengan kolom awal.");
                     }
                 } while (true);
-
-                // Reservasi kursi pada bloc
+                return kolom;
+            }
+        
+            // Method untuk melakukan reservasi blok kursi
+            private static void reservasiBlokKursi(String[][] kursi, String barisAwal, int kolomAwal, String barisAkhir, int kolomAkhir) {
                 for (int i = barisAwal.charAt(0) - 'A'; i <= barisAkhir.charAt(0) - 'A'; i++) {
                     for (int j = kolomAwal; j <= kolomAkhir; j++) {
-                        kursi[i][j] = " X";
+                        kursi[i][j] = " X"; // Reservasi kursi
                     }
-                }
-
-                // Menampilkan kursi setelah reservasi
-                for (int i = 0; i < kursi.length; i++) {
-                    for (int j = 0; j < kursi[i].length; j++) {
-                        System.out.print(kursi[i][j] + " ");
-                    }
-                    System.out.println(); // Tambahkan baris baru setelah setiap baris kursi
                 }
             }
-        }
-
-
-
-
-
-
-
-        // Fitur Pembayaran
-        //Inisialisasi dan deklarasi variable
-        int tiket = 25000;
-        int hargaTotal = bnykKursi*tiket;
-        int metode;
-        int norek;
-        System.out.println(" ");
-        System.out.println("Selamat datang di menu pembayaran");
-        System.out.println(" ");
-
-        System.out.println("Total : "+hargaTotal);
-        System.out.println("Pilih metode pembayaran: ");
-        System.out.println("1. Transfer bank ");
-        System.out.println("2. Credit");
-        System.out.println("3. Cash");
-        metode = sc.nextInt();
-        if (metode == 1) {
-            System.out.println("");
-        } else if (metode == 2) {
-            System.out.println("Masukkan nomor rekening anda");
-            norek = sc.nextInt();
-        }else if(metode == 3){
-            System.out.println("");
-        }
-            
         
+            // Method untuk menghitung jumlah kursi yang sudah terisi
+            private static int hitungJumlahKursiTerisi(String[][] kursi) {
+                int jumlahTerisi = 0;
+                for (int i = 0; i < kursi.length; i++) {
+                    for (int j = 0; j < kursi[i].length; j++) {
+                        if (kursi[i][j].equals(" X")) {
+                            jumlahTerisi++;
+                        }
+                    }
+                }
+                return jumlahTerisi;
+            }
+}
 
-        }
+
+
+
+
 
 
         
-    }
-
-
