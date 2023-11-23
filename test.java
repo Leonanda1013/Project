@@ -217,6 +217,7 @@ public class test {
                                         break;
                                     }
                                 }
+                                
                             }
                 
                             System.out.println("Apakah Kursi yang Anda Pilih Sudah Benar? (y/t) ");
@@ -360,7 +361,11 @@ public class test {
         System.out.println("2. Login (Anda sudah login)");
         System.out.println("3. Logout");
         System.out.println("4. Beli Tiket");
-        System.out.println("5. Keluar");
+        System.out.println("5. Beli Snack dan Minuman");
+        System.out.println("6. Member");
+        System.out.println("7. Rincian Pembayaran");
+        System.out.println("8. Cetak Pembayaran");
+        System.out.println("9. Keluar");
     }
 
     static void register() {
