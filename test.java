@@ -1,16 +1,16 @@
 import java.util.Scanner;
 import java.util.HashMap;
+import java.util.Map;
 
 public class test {
 
     static Scanner sc = new Scanner(System.in);
     static boolean isLoggedIn = false;
+    static boolean isMember = false;
     static String username, masuk;
     static HashMap<String, String> userCredentials = new HashMap<>();
-
-    static {
-        userCredentials.put("admin", "admin123");
-    }
+    static Map<String, Integer> snacksPurchased = new HashMap<>();
+    static Map<String, Integer> drinksPurchased = new HashMap<>();
 
     public static void main(String[] args) {
         System.out.println(
@@ -35,10 +35,24 @@ public class test {
                 showMenuSudahLogin();
             }
 
-            System.out.print("Pilih opsi (1-5): ");
             int choice = sc.nextInt();
-
             switch (choice) {
+                case 6:
+                    if (isLoggedIn && !isMember) {
+                        becomeMember();
+                    } else if (isMember) {
+                        System.out.println("Anda sudah menjadi member.");
+                    } else {
+                        System.out.println("Anda belum login.");
+                    }
+                    break;
+                case 5:
+                    if (isLoggedIn) {
+                         beliSnackMinuman();
+                    } else {
+                        System.out.println("Anda belum login.");
+                    }
+                    break;
                 case 1:
                     if (!isLoggedIn) {
                         register();
@@ -353,11 +367,13 @@ public class test {
                                     }
                                 }
                                 return jumlahTerisi;
-                    }
+                            }
+
     static void showMenuBelumLogin() {
         System.out.println("1. Registrasi");
         System.out.println("2. Login");
         System.out.println("3. Keluar");
+        System.out.print("Pilih Opsi (1 - 3) : ");
     }
 
     static void showMenuSudahLogin() {
@@ -370,6 +386,7 @@ public class test {
         System.out.println("7. Rincian Pembayaran");
         System.out.println("8. Cetak Pembayaran");
         System.out.println("9. Keluar");
+        System.out.print("Pilih opsi (1 - 9) : ");
     }
 
     static void register() {
@@ -414,5 +431,62 @@ public class test {
         } else {
             System.out.println("Login gagal. Username tidak ditemukan.");
         }
+        }
+        static void beliSnackMinuman() {
+            System.out.println("Daftar Snack dan Minuman:");
+            System.out.println("1. Popcorn - Rp. 15,000");
+            System.out.println("2. Nachos - Rp. 12,000");
+            System.out.println("3. Cola - Rp. 8,000");
+            System.out.println("4. Mineral Water - Rp. 5,000");
+    
+            System.out.print("Pilih item (1-4): ");
+            int snackChoice = sc.nextInt();
+    
+            System.out.print("Jumlah item yang dibeli: ");
+            int quantity = sc.nextInt();
+    
+            switch (snackChoice) {
+                case 1:
+                    addToCart("Popcorn", 15000, quantity);
+                    break;
+                case 2:
+                    addToCart("Nachos", 12000, quantity);
+                    break;
+                case 3:
+                    addToCart("Cola", 8000, quantity);
+                    break;
+                case 4:
+                    addToCart("Mineral Water", 5000, quantity);
+                    break;
+                default:
+                    System.out.println("Pilihan tidak valid.");
+            }
+        }
+    
+        static void addToCart(String itemName, int itemPrice, int quantity) {
+            int totalCost = itemPrice * quantity;
+    
+            System.out.println("Item berhasil ditambahkan ke keranjang: " + itemName);
+            System.out.println("Harga per item: Rp. " + itemPrice);
+            System.out.println("Jumlah item: " + quantity);
+            System.out.println("Total biaya: Rp. " + totalCost);
+    
+            // Add the item to the respective cart
+            if (itemName.equals("Popcorn") || itemName.equals("Nachos")) {
+                snacksPurchased.put(itemName, snacksPurchased.getOrDefault(itemName, 0) + quantity);
+            } else {
+                drinksPurchased.put(itemName, drinksPurchased.getOrDefault(itemName, 0) + quantity);
+            }
+            }
+         static void becomeMember() {
+            System.out.print("Ingin menjadi member? (y/n): ");
+            char response = sc.next().charAt(0);        
+            if (response == 'y' || response == 'Y') {
+                isMember = true;
+            System.out.println("Selamat! Anda sekarang menjadi member Vinluna Cinema.");
+            System.out.println("Nikmati berbagai keuntungan dan diskon spesial.");
+            } else {
+                System.out.println("Terima kasih atas kunjungan Anda.");
+            }
+        }
     }
-}
