@@ -8,6 +8,10 @@ public class test {
     static String username, masuk;
     static HashMap<String, String> userCredentials = new HashMap<>();
 
+    static {
+        userCredentials.put("admin", "admin123");
+    }
+
     public static void main(String[] args) {
         System.out.println(
             "██╗   ██╗██╗███╗   ██╗██╗     ██╗   ██╗███╗   ██╗ █████╗      ██████╗██╗███╗   ██╗███████╗███╗   ███╗ █████╗ \r\n" + //
