@@ -7,6 +7,7 @@ public class test {
     static Scanner sc = new Scanner(System.in);
     static boolean isLoggedIn = false;
     static boolean isMember = false;
+    static boolean AdminUser = false;
     static String username, masuk;
     static HashMap<String, String> userCredentials = new HashMap<>();
     static Map<String, Integer> snacksPurchased = new HashMap<>();
@@ -29,6 +30,15 @@ public class test {
             System.out.println("██████████████████████████████████████");
             System.out.println();
 
+            if(!AdminUser){
+                showAdminUser();
+            } else{
+                showMenuBelumLogin();
+            }
+            int MenuUserAdmin = sc.nextInt();
+            switch (MenuUserAdmin){
+                case 1:
+                case 2:
             if (!isLoggedIn) {
                 showMenuBelumLogin();
             } else {
@@ -276,6 +286,7 @@ public class test {
                 }
             }
         }
+        }
                     
                             // Method untuk menampilkan peta kursi
                             private static void tampilkanPetaKursi(String[][] kursi) {
@@ -316,7 +327,7 @@ public class test {
                                 } while (true);
                                 return kolom;
                             }
-                        
+
                             // Method untuk input dan validasi baris dengan batasan berdasarkan baris awal
                             private static String inputBaris(Scanner sc, String batasan) {
                                 String baris;
@@ -369,6 +380,15 @@ public class test {
                                 return jumlahTerisi;
                             }
 
+    static void showAdminUser(){
+        System.out.println("1. Admin");
+        System.out.println("2. User");
+        System.out.print("Pilih Opsi (1 - 2) : ");
+    }
+    
+    static void AdminMenu(){
+        System.out.println("1. Login");
+    }
     static void showMenuBelumLogin() {
         System.out.println("1. Registrasi");
         System.out.println("2. Login");
@@ -388,6 +408,8 @@ public class test {
         System.out.println("9. Keluar");
         System.out.print("Pilih opsi (1 - 9) : ");
     }
+
+
 
     static void register() {
         System.out.print("Masukkan username: ");
