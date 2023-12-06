@@ -118,11 +118,36 @@ public class test {
                             case 8: 
                                 if(isLoggedIn){
                                     if (sudahBayar) {
+                                        if (isTiketKeranjang) {
+
+                                        System.out.println("\nBELI TIKET");
+                                        System.out.println("Judul Film : " + judulFilm[choiceFilm - 1]);
+                                        System.out.println("Studio : " + inpuStudio);
+                                        System.out.println("Jam : " + jam[inputJam - 1]);
+                                        System.out.println("Jumlah Kursi : " + bnykKursi);
+                                        hargaTiket();
+                                    }
+                                    if (isSnackKeranjang) {
+
+                                        System.out.println("\nBeli Snack dan Minum : ");
+                                        System.out.println("Item berhasil ditambahkan ke keranjang : " + itemName);
+                                        System.out.println("Harga per Item : Rp." + itemPrice);
+                                        System.out.println("Jumlah Item : " + quantity);
+                                        System.out.println("Total Biaya : Rp." + totalCost);
+                                    }
+                                    if (isTiketKeranjang || isSnackKeranjang) {
+                                        keranjang = hargaTiketTotal+totalCost;
+                                        System.out.println("Total : Rp." + keranjang);
                                         
                                     }else{
                                         System.out.println("Anda belum membayar");
                                     }
                                 }
+                            }
+                            case 9:
+                            if (isLoggedIn) {
+                                break;
+                            }
                             case 7:
                                 if (isLoggedIn) {
                                    fiturKeranjang = true;

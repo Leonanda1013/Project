@@ -35,7 +35,7 @@ public class Booking {
     static int itemPrice, quantity;
     static boolean fiturKeranjang;
     static boolean fiturSnack;
-    static boolean sudahBayar;
+    static boolean sudahBayar = false;
 
     public static void main(String[] args) {
 
@@ -118,11 +118,36 @@ public class Booking {
                             case 8: 
                                 if(isLoggedIn){
                                     if (sudahBayar) {
+                                        if (isTiketKeranjang) {
+
+                                        System.out.println("\nBELI TIKET");
+                                        System.out.println("Judul Film : " + judulFilm[choiceFilm - 1]);
+                                        System.out.println("Studio : " + inpuStudio);
+                                        System.out.println("Jam : " + jam[inputJam - 1]);
+                                        System.out.println("Jumlah Kursi : " + bnykKursi);
+                                        hargaTiket();
+                                    }
+                                    if (isSnackKeranjang) {
+
+                                        System.out.println("\nBeli Snack dan Minum : ");
+                                        System.out.println("Item berhasil ditambahkan ke keranjang : " + itemName);
+                                        System.out.println("Harga per Item : Rp." + itemPrice);
+                                        System.out.println("Jumlah Item : " + quantity);
+                                        System.out.println("Total Biaya : Rp." + totalCost);
+                                    }
+                                    if (isTiketKeranjang || isSnackKeranjang) {
+                                        keranjang = hargaTiketTotal+totalCost;
+                                        System.out.println("Total : Rp." + keranjang);
                                         
                                     }else{
                                         System.out.println("Anda belum membayar");
                                     }
                                 }
+                            }
+                            case 9:
+                            if (isLoggedIn) {
+                                break;
+                            }
                             case 7:
                                 if (isLoggedIn) {
                                    fiturKeranjang = true;
@@ -163,6 +188,7 @@ public class Booking {
                                             }
 
                                         }
+
                                     } else {
                                         System.out.println("Tidak ada Item di Keranjang");
                                     }
@@ -420,6 +446,7 @@ public class Booking {
                                             validasiBayar(norek);
                                         } else {
                                             System.out.println("Metode pembayaran tidak valid.");
+                                            sudahBayar = true;
                                         }
 
                                     } else if (masukBayar == 2) {
@@ -843,6 +870,7 @@ public class Booking {
             System.out.println("Masukkan nomor rekening anda : ");
             norek = scanner.nextLine();
             validasiBayar(norek);
+            sudahBayar = true;
         } else {
             System.out.println("Metode pembayaran tidak valid.");
         }
