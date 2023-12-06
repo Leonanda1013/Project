@@ -39,6 +39,7 @@ public class main {
     static boolean sudahBayarTiket = false;
     static boolean sudahBayarSnack = false;
     static boolean fiturTiket;
+    static int jumlahTerisi;
 
     public static void main(String[] args) {
 
@@ -354,7 +355,7 @@ public class main {
 
                                                 // Reservasi kursi
                                                 ubahbaris = baris.charAt(0) - 'A'; // Konversi baris ke indeks array
-                                                kursi[ubahbaris][kolom] = "XX";
+                                                kursi[ubahbaris][kolom] = "X";
                                             }
 
                                             // Menampilkan peta kursi setelah pemilihan
@@ -381,10 +382,27 @@ public class main {
 
                                                 // Menampilkan peta kursi setelah reservasi
                                                 tampilkanPetaKursi(kursi);
+                                                hitungJumlahKursiTerisi(kursi);
 
                                                 // Keluar dari loop jika jumlah kursi sudah sesuai
-                                                if (hitungJumlahKursiTerisi(kursi) >= bnykKursi) {
+                                                if (hitungJumlahKursiTerisi(kursi) == bnykKursi) {
                                                     break;
+                                                } else if (hitungJumlahKursiTerisi(kursi) >= bnykKursi) {
+                                                    // Reset semua perubahan jika memilih kursi dibatalkan
+                                                    ubahbaris = 0;
+                                                    kursi = new String[][] {
+                                                            { "A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9",
+                                                                    "A10" },
+                                                            { "B1", "B2", "B3", "B4", "B5", "B6", "B7", "B8", "B9",
+                                                                    "B10" },
+                                                            { "C1", "C2", "C3", "C4", "C5", "C6", "C7", "C8", "C9",
+                                                                    "C10" },
+                                                            { "D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "D9",
+                                                                    "D10" },
+                                                            { "E1", "E2", "E3", "E4", "E5", "E6", "E7", "E8", "E9",
+                                                                    "E10" },
+                                                    };
+                                                    continue;
                                                 }
                                             }
 
@@ -603,14 +621,14 @@ public class main {
             int kolomAkhir) {
         for (int i = barisAwal.charAt(0) - 'A'; i <= barisAkhir.charAt(0) - 'A'; i++) {
             for (int j = kolomAwal; j <= kolomAkhir; j++) {
-                kursi[i][j] = " X"; // Reservasi kursi
+                kursi[i][j] = "XX"; // Reservasi kursi
             }
         }
     }
 
     // Method untuk menghitung jumlah kursi yang sudah terisi
     private static int hitungJumlahKursiTerisi(String[][] kursi) {
-        int jumlahTerisi = 0;
+        jumlahTerisi = 0;
         for (int i = 0; i < kursi.length; i++) {
             for (int j = 0; j < kursi[i].length; j++) {
                 if (kursi[i][j].equals("XX")) {
