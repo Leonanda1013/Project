@@ -387,6 +387,22 @@ public class main {
                                                 // Keluar dari loop jika jumlah kursi sudah sesuai
                                                 if (hitungJumlahKursiTerisi(kursi) == bnykKursi) {
                                                     break;
+                                                } else if (hitungJumlahKursiTerisi(kursi) >= bnykKursi) {
+                                                    // Reset semua perubahan jika memilih kursi dibatalkan
+                                                    ubahbaris = 0;
+                                                    kursi = new String[][] {
+                                                            { "A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9",
+                                                                    "A10" },
+                                                            { "B1", "B2", "B3", "B4", "B5", "B6", "B7", "B8", "B9",
+                                                                    "B10" },
+                                                            { "C1", "C2", "C3", "C4", "C5", "C6", "C7", "C8", "C9",
+                                                                    "C10" },
+                                                            { "D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "D9",
+                                                                    "D10" },
+                                                            { "E1", "E2", "E3", "E4", "E5", "E6", "E7", "E8", "E9",
+                                                                    "E10" },
+                                                    };
+                                                    continue;
                                                 }
                                             }
 
