@@ -78,10 +78,10 @@ public class main {
 
                     while (true) {
                         System.out.println("=======================================");
-                        System.out.println("   _   _  _  _ _ _  _ \r\n" + //
-                                "  /\\ |   \\|  \\/  | _| \\| |\r\n" + //
+                        System.out.println("   _   ___  __  __ ___ _  _ \r\n" + //
+                                "  /_\\ |   \\|  \\/  |_ _| \\| |\r\n" + //
                                 " / _ \\| |) | |\\/| || || .` |\r\n" + //
-                                "// \\\\_/||  ||_||\\|");
+                                "/_/ \\_\\___/|_|  |_|___|_|\\_|");
                         System.out.println(" ");
                         System.out.println("=======================================");
                         System.out.println("[1] Ubah Tanggal");
@@ -176,13 +176,15 @@ public class main {
                                             } else if (case7 == 2) {
                                                 break;
                                             } else {
-                                                System.out.println("Pilihan tidak ada");
+                                                System.out.println("\nPilihan tidak ada\n");
                                             }
 
                                         }
 
                                     } else {
+                                        System.out.println(" ");
                                         System.out.println("Tidak ada Item di Keranjang");
+                                        System.out.println(" ");
                                     }
                                 }
                                 break;
@@ -233,10 +235,10 @@ public class main {
                                 if (isLoggedIn) {
 
                                     // Tambahkan fitur lainnya di sini untuk pengguna yang sudah login
-                                    System.out.println(" _      _ _   __ __ _       _   \r\n" + //
-                                            "| _ ) _| () |   | | |_| | \r\n" + //
-                                            "| _ \\/ -) | |   | |  | || / / -)  _|\r\n" + //
-                                            "|_/\\_|||   || |_|\\\\_|\\_|");
+                                    System.out.println(" ___      _ _   _____ ___ _       _   \r\n" + //
+                                            "| _ ) ___| (_) |_   _|_ _| |_____| |_ \r\n" + //
+                                            "| _ \\/ -_) | |   | |  | || / / -_)  _|\r\n" + //
+                                            "|___/\\___|_|_|   |_| |___|_\\_\\___|\\__|");
                                     System.out.println("");
 
                                     System.out.println("Daftar Film");
@@ -283,7 +285,7 @@ public class main {
                                         System.out.print("Pilih Tanggal (Hari) : ");
                                         inputTanggal = sc.nextInt();
                                         if (inputTanggal != hari[inputTanggal]) {
-                                            System.out.println("Tanggal yang anda masukkan tidak tersedia");
+                                            System.out.println("Tanggal yang anda masukkan tidak tersedia\n");
 
                                         } else {
                                             System.out.println(" ");
@@ -442,16 +444,16 @@ public class main {
                                             sudahBayarTiket = true;
                                             fiturTiket = true;
                                         } else {
-                                            System.out.println("Metode pembayaran tidak valid.");
+                                            System.out.println("Metode pembayaran tidak valid.\n");
 
                                         }
 
                                     } else if (masukBayar == 2) {
-                                        System.out.println("Pesanan Telah Masuk pada Keranjang");
+                                        System.out.println("Pesanan Telah Masuk pada Keranjang\n");
                                         isTiketKeranjang = true;
 
                                     } else {
-                                        System.out.println("Input Salah");
+                                        System.out.println("Input Salah\n");
                                     }
 
                                     // Fitur cetak tiket
@@ -469,7 +471,7 @@ public class main {
                                         System.out.println("Jam : " + jam[inputJam - 1]);
                                         System.out.println("Jumlah Kursi : " + bnykKursi);
                                         hargaTiket();
-                                        System.out.println("Status: Sudah Dibayar!");
+                                        System.out.println("Status: Sudah Dibayar!\n");
                                     }
                                     if (sudahBayarSnack) {
 
@@ -478,10 +480,10 @@ public class main {
                                         System.out.println("Harga per Item : Rp." + itemPrice);
                                         System.out.println("Jumlah Item : " + quantity);
                                         System.out.println("Total Biaya : Rp." + totalCost);
-                                        System.out.println("Status: Sudah Dibayar!");
+                                        System.out.println("Status: Sudah Dibayar!\n");
                                     }
                                 } else {
-                                    System.out.println("Anda belum membayar");
+                                    System.out.println("Anda belum membayar\n");
                                 }
 
                         }
@@ -511,9 +513,9 @@ public class main {
         System.out.print("Apakah anda yakin (y/n) : ");
         String validasiMbayar = sc.next();
         if (validasiMbayar.equalsIgnoreCase("y")) {
-            System.out.println("Terimakasih sudah membayar");
+            System.out.println("Terimakasih sudah membayar\n");
         } else {
-            System.out.println("Pembayaran Dibatalkan");
+            System.out.println("Pembayaran Dibatalkan\n");
             // Perulangan untuk meminta input nomor rekening kembali
         }
     }
@@ -626,12 +628,10 @@ public class main {
     }
 
     static void showMenuBelumLogin() {
-        System.out.println("=======================================");
-
-        System.out.println(" _   _  _   _  _ __ \r\n" + //
-                "| | | |/ _| / _ \\| '_|\r\n" + //
-                "| || |\\_ \\|  __/| |   \r\n" + //
-                " \\_,||_/ \\_||_|   \r\n" + //
+        System.out.println(" _   _  ___   ___  _ __ \r\n" + //
+                "| | | |/ __| / _ \\| '__|\r\n" + //
+                "| |_| |\\__ \\|  __/| |   \r\n" + //
+                " \\__,_||___/ \\___||_|   \r\n" + //
                 "");
         System.out.println("=======================================");
         System.out.println("[1] Registrasi");
