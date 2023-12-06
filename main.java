@@ -259,7 +259,7 @@ public class main {
                                             System.out.println("Film Tidak Tersedia");
                                         }
                                     }
-                                    // Masuk fitur pemilihan tanggal dan waktu
+                                    // Masuk f1itur pemilihan tanggal dan waktu
                                     // Deklarasi variable
                                     int[] hari = new int[31];
 
