@@ -39,6 +39,7 @@ public class main {
     static boolean sudahBayarTiket = false;
     static boolean sudahBayarSnack = false;
     static boolean fiturTiket;
+    static int jumlahTerisi;
 
     public static void main(String[] args) {
 
@@ -352,7 +353,7 @@ public class main {
 
                                                 // Reservasi kursi
                                                 ubahbaris = baris.charAt(0) - 'A'; // Konversi baris ke indeks array
-                                                kursi[ubahbaris][kolom] = "XX";
+                                                kursi[ubahbaris][kolom] = "X";
                                             }
 
                                             // Menampilkan peta kursi setelah pemilihan
@@ -379,9 +380,10 @@ public class main {
 
                                                 // Menampilkan peta kursi setelah reservasi
                                                 tampilkanPetaKursi(kursi);
+                                                hitungJumlahKursiTerisi(kursi);
 
                                                 // Keluar dari loop jika jumlah kursi sudah sesuai
-                                                if (hitungJumlahKursiTerisi(kursi) >= bnykKursi) {
+                                                if (hitungJumlahKursiTerisi(kursi) == bnykKursi) {
                                                     break;
                                                 }
                                             }
@@ -601,14 +603,14 @@ public class main {
             int kolomAkhir) {
         for (int i = barisAwal.charAt(0) - 'A'; i <= barisAkhir.charAt(0) - 'A'; i++) {
             for (int j = kolomAwal; j <= kolomAkhir; j++) {
-                kursi[i][j] = " X"; // Reservasi kursi
+                kursi[i][j] = "XX"; // Reservasi kursi
             }
         }
     }
 
     // Method untuk menghitung jumlah kursi yang sudah terisi
     private static int hitungJumlahKursiTerisi(String[][] kursi) {
-        int jumlahTerisi = 0;
+        jumlahTerisi = 0;
         for (int i = 0; i < kursi.length; i++) {
             for (int j = 0; j < kursi[i].length; j++) {
                 if (kursi[i][j].equals("XX")) {
