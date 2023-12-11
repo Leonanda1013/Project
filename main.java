@@ -40,9 +40,9 @@ public class main {
     static boolean sudahBayarSnack = false;
     static boolean fiturTiket;
     static int jumlahTerisi;
-    static int bnykTambahan;
 
     public static void main(String[] args) {
+
         judulFilm[0] = "Spiderman";
         judulFilm[1] = "Avangers";
 
@@ -86,9 +86,8 @@ public class main {
                         System.out.println("=======================================");
                         System.out.println("[1] Ubah Tanggal");
                         System.out.println("[2] Ubah Film");
-                        System.out.println("[3] Tambah Film");
-                        System.out.println("[4] Keluar");
-                        System.out.print("Pilih opsi : ");
+                        System.out.println("[3] Keluar");
+                        System.out.print("Pilih yang ingin dirubah : ");
                         int pilihPerubahan = sc.nextInt();
 
                         if (pilihPerubahan == 1) {
@@ -96,9 +95,6 @@ public class main {
                         } else if (pilihPerubahan == 2) {
                             ubahFilmMenu();
                         } else if (pilihPerubahan == 3) {
-                            tambahFilm();
-
-                        } else if (pilihPerubahan == 4) {
                             System.out.println(" ");
                             break;
                         } else {
@@ -120,16 +116,15 @@ public class main {
                         if (isLoggedIn) { // kalo isLoggedin true dia bakal nambah 2 karena showMenuSudahLogin untuk
                                           // inputnya
                                           // selalu diambah 2 dari yang sebenarnya
-                            choice += 3;
+                            choice += 2;
                         }
                         switch (choice) {
-                            case 3:
-                                break;
-                            case 10:
+
+                            case 9:
                                 if (isLoggedIn) {
                                     break;
                                 }
-                            case 7:
+                            case 6:
                                 if (isLoggedIn) {
                                     fiturKeranjang = true;
                                     System.out.println("Rincian: ");
@@ -193,7 +188,7 @@ public class main {
                                     }
                                 }
                                 break;
-                            case 6:
+                            case 5:
                                 if (isLoggedIn && !isMember) {
                                     becomeMember();
                                 } else if (isMember) {
@@ -202,7 +197,7 @@ public class main {
                                     System.out.println("Anda belum Login.");
                                 }
                                 break;
-                            case 5:
+                            case 4:
                                 if (isLoggedIn) {
                                     fiturSnack = true;
                                     beliSnackMinuman();
@@ -228,7 +223,7 @@ public class main {
                                     System.out.println("Anda sudah Login.");
                                 }
                                 break;
-                            case 9:
+                            case 8:
                                 if (isLoggedIn) {
                                     System.out.println("Anda berhasil Logout.");
                                     isLoggedIn = false;
@@ -236,7 +231,7 @@ public class main {
                                     System.out.println("Anda belum Login.");
                                 }
                                 break;
-                            case 4:
+                            case 3:
                                 if (isLoggedIn) {
 
                                     // Tambahkan fitur lainnya di sini untuk pengguna yang sudah login
@@ -481,7 +476,7 @@ public class main {
                                     System.out.println(" ");
 
                                 }
-                            case 8:
+                            case 7:
 
                                 if (sudahBayar) {
                                     if (sudahBayarTiket) {
@@ -936,30 +931,6 @@ public class main {
             isPesanKeranjang = true;
         } else {
             System.out.println("Input Salah");
-        }
-    }
-
-    static void tambahFilm() {
-        System.out.println("Banyak Film yang ditambahkan: ");
-        int jumlahTambah = sc.nextInt();
-        sc.nextLine(); // Membersihkan buffer setelah nextInt
-
-        String[] judulFilmBaru = new String[judulFilm.length + jumlahTambah];
-        for (int i = 0; i < judulFilm.length; i++) {
-            judulFilmBaru[i] = judulFilm[i];
-        }
-
-        for (int i = judulFilm.length; i < judulFilmBaru.length; i++) {
-            System.out.print("Masukkan judul Film ke-" + (i + 1) + ": ");
-            judulFilmBaru[i] = sc.nextLine();
-        }
-
-        judulFilm = judulFilmBaru; // Update the global array with the new array
-        banyakFilm = judulFilm.length; // Update the jumlah film
-
-        System.out.println("Judul Film setelah penambahan:");
-        for (String judul : judulFilm) {
-            System.out.println(judul);
         }
     }
 }
