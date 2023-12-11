@@ -445,10 +445,10 @@ public class main {
                                     System.out.print("Silahkan pilih opsi anda (1 - 2) : ");
                                     int masukBayar = sc.nextInt();
                                     if (masukBayar == 1) {
-                                        System.out.println("Metode Pembayaran : ");
+                                        System.out.println("\nMetode Pembayaran : ");
                                         System.out.println("[1] Transfer");
                                         System.out.println("[2] Debit");
-                                        System.out.print("Pilih metode pembayaran : ");
+                                        System.out.print("Pilih metode pembayaran :b ");
                                         int metodeBayar = sc.nextInt();
                                         String norek;
                                         if (metodeBayar == 1 || metodeBayar == 2) {
