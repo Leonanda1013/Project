@@ -41,6 +41,7 @@ public class main {
     static boolean fiturTiket;
     static int jumlahTerisi;
     static int bnykTambahan;
+    static boolean Keluar;
 
     public static void main(String[] args) {
         judulFilm[0] = "Spiderman";
@@ -109,7 +110,11 @@ public class main {
                     }
                 } else if (MenuUserAdmin == 2) {
                     while (true) {
+                        if (Keluar) {
+                            Keluar = false;
+                            break;
 
+                        }
                         if (!isLoggedIn) {
                             showMenuBelumLogin();
                         } else {
@@ -124,9 +129,15 @@ public class main {
                         }
                         switch (choice) {
                             case 3:
-                                break;
+                                if (!isLoggedIn) {
+                                    Keluar = true;
+                                    break;
+
+                                }
+
                             case 10:
                                 if (isLoggedIn) {
+                                    isLoggedIn = false;
                                     break;
                                 }
                             case 7:
