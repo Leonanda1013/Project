@@ -4,6 +4,12 @@ import java.util.Map;
 
 public class main {
 
+    //add color
+    static String green = "\033[32m";
+    static String reset = "\u001B[0m";
+    static String white = "\033[37m";
+    static String red = "\033[31m";
+    //
     static Scanner sc = new Scanner(System.in);
     static Scanner scanner = new Scanner(System.in);
     static boolean isLoggedIn = false;
@@ -44,12 +50,11 @@ public class main {
     static boolean Keluar;
 
     public static void main(String[] args) {
-
         judulFilm[0] = "Spiderman";
         judulFilm[1] = "Avangers";
 
         System.out.println(
-                "██╗   ██╗██╗███╗   ██╗██╗     ██╗   ██╗███╗   ██╗ █████╗      ██████╗██╗███╗   ██╗███████╗███╗   ███╗ █████╗ \r\n"
+                red + "██╗   ██╗██╗███╗   ██╗██╗     ██╗   ██╗███╗   ██╗ █████╗      ██████╗██╗███╗   ██╗███████╗███╗   ███╗ █████╗ \r\n"
                         + //
                         "██║   ██║██║████╗  ██║██║     ██║   ██║████╗  ██║██╔══██╗    ██╔════╝██║████╗  ██║██╔════╝████╗ ████║██╔══██╗\r\n"
                         + //
@@ -61,7 +66,7 @@ public class main {
                         + //
                         "  ╚═══╝  ╚═╝╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝  ╚═╝     ╚═════╝╚═╝╚═╝  ╚═══╝╚══════╝╚═╝     ╚═╝╚═╝  ╚═╝\r\n"
                         + //
-                        "                                                                                                             ");
+                        "                                                                                                             " + reset);
         while (true) {
             System.out.println("██████████████████████████████████████");
             System.out.println("██                                  ██");
@@ -80,16 +85,17 @@ public class main {
 
                     while (true) {
                         System.out.println("=======================================");
-                        System.out.println("   _   ___  __  __ ___ _  _ \r\n" + //
+                        System.out.println(red + "   _   ___  __  __ ___ _  _ \r\n" + //
                                 "  /_\\ |   \\|  \\/  |_ _| \\| |\r\n" + //
                                 " / _ \\| |) | |\\/| || || .` |\r\n" + //
-                                "/_/ \\_\\___/|_|  |_|___|_|\\_|");
+                                "/_/ \\_\\___/|_|  |_|___|_|\\_|"+reset);
                         System.out.println(" ");
                         System.out.println("=======================================");
                         System.out.println("[1] Ubah Tanggal");
                         System.out.println("[2] Ubah Film");
-                        System.out.println("[3] Keluar");
-                        System.out.print("Pilih yang ingin dirubah : ");
+                        System.out.println("[3] Tambah Film");
+                        System.out.println("[4] Keluar");
+                        System.out.print("Pilih opsi : ");
                         int pilihPerubahan = sc.nextInt();
 
                         if (pilihPerubahan == 1) {
@@ -97,6 +103,9 @@ public class main {
                         } else if (pilihPerubahan == 2) {
                             ubahFilmMenu();
                         } else if (pilihPerubahan == 3) {
+                            tambahFilm();
+
+                        } else if (pilihPerubahan == 4) {
                             System.out.println(" ");
                             break;
                         } else {
@@ -125,13 +134,20 @@ public class main {
                             choice += 3;
                         }
                         switch (choice) {
-                            
+                            case 3:
+                                if (!isLoggedIn) {
+                                    System.out.println("");
+                                    Keluar = true;
+                                    break;
+
+                                }
+
                             case 10:
                                 if (isLoggedIn) {
                                     isLoggedIn = false;
                                     break;
                                 }
-                            case 6:
+                            case 7:
                                 if (isLoggedIn) {
                                     fiturKeranjang = true;
                                     System.out.println("Rincian: ");
@@ -195,7 +211,7 @@ public class main {
                                     }
                                 }
                                 break;
-                            case 5:
+                            case 6:
                                 if (isLoggedIn && !isMember) {
                                     becomeMember();
                                 } else if (isMember) {
@@ -204,7 +220,7 @@ public class main {
                                     System.out.println("Anda belum Login.");
                                 }
                                 break;
-                            case 4:
+                            case 5:
                                 if (isLoggedIn) {
                                     fiturSnack = true;
                                     beliSnackMinuman();
@@ -230,7 +246,7 @@ public class main {
                                     System.out.println("Anda sudah Login.");
                                 }
                                 break;
-                            case 8:
+                            case 9:
                                 if (isLoggedIn) {
                                     System.out.println("Anda berhasil Logout.");
                                     isLoggedIn = false;
@@ -238,7 +254,7 @@ public class main {
                                     System.out.println("Anda belum Login.");
                                 }
                                 break;
-                            case 3:
+                            case 4:
                                 if (isLoggedIn) {
 
                                     // Tambahkan fitur lainnya di sini untuk pengguna yang sudah login
@@ -267,7 +283,7 @@ public class main {
                                             System.out.println("Film Tidak Tersedia");
                                         }
                                     }
-                                    // Masuk f1itur pemilihan tanggal dan waktu
+                                    // Masuk fitur pemilihan tanggal dan waktu
                                     // Deklarasi variable
                                     int[] hari = new int[31];
 
@@ -452,10 +468,10 @@ public class main {
                                     System.out.print("Silahkan pilih opsi anda (1 - 2) : ");
                                     int masukBayar = sc.nextInt();
                                     if (masukBayar == 1) {
-                                        System.out.println("\nMetode Pembayaran : ");
+                                        System.out.println("Metode Pembayaran : ");
                                         System.out.println("[1] Transfer");
                                         System.out.println("[2] Debit");
-                                        System.out.print("Pilih metode pembayaran :b ");
+                                        System.out.print("Pilih metode pembayaran : ");
                                         int metodeBayar = sc.nextInt();
                                         String norek;
                                         if (metodeBayar == 1 || metodeBayar == 2) {
@@ -483,7 +499,7 @@ public class main {
                                     System.out.println(" ");
 
                                 }
-                            case 7:
+                            case 8:
 
                                 if (sudahBayar) {
                                     if (sudahBayarTiket) {
@@ -809,7 +825,7 @@ public class main {
     }
 
     static void ubahTanggal() {
-        System.out.print("Masukkan Tanggal untuk Pemutaran & Hari ke depan : ");
+        System.out.print("Masukkan Tanggal untuk Pemutaran 7 Hari ke depan : ");
         adminInput = sc.nextInt();
         System.out.print("Masukkan Bulan : ");
         adminBulan = sc.nextInt();
@@ -938,6 +954,30 @@ public class main {
             isPesanKeranjang = true;
         } else {
             System.out.println("Input Salah");
+        }
+    }
+
+    static void tambahFilm() {
+        System.out.println("Banyak Film yang ditambahkan: ");
+        int jumlahTambah = sc.nextInt();
+        sc.nextLine(); // Membersihkan buffer setelah nextInt
+
+        String[] judulFilmBaru = new String[judulFilm.length + jumlahTambah];
+        for (int i = 0; i < judulFilm.length; i++) {
+            judulFilmBaru[i] = judulFilm[i];
+        }
+
+        for (int i = judulFilm.length; i < judulFilmBaru.length; i++) {
+            System.out.print("Masukkan judul Film ke-" + (i + 1) + ": ");
+            judulFilmBaru[i] = sc.nextLine();
+        }
+
+        judulFilm = judulFilmBaru; // Update the global array with the new array
+        banyakFilm = judulFilm.length; // Update the jumlah film
+
+        System.out.println("Judul Film setelah penambahan:");
+        for (String judul : judulFilm) {
+            System.out.println(judul);
         }
     }
 }
