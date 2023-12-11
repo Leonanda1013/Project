@@ -40,6 +40,8 @@ public class main {
     static boolean sudahBayarSnack = false;
     static boolean fiturTiket;
     static int jumlahTerisi;
+    static int bnykTambahan;
+    static boolean Keluar;
 
     public static void main(String[] args) {
 
@@ -105,7 +107,11 @@ public class main {
                     }
                 } else if (MenuUserAdmin == 2) {
                     while (true) {
+                        if (Keluar) {
+                            Keluar = false;
+                            break;
 
+                        }
                         if (!isLoggedIn) {
                             showMenuBelumLogin();
                         } else {
@@ -116,12 +122,13 @@ public class main {
                         if (isLoggedIn) { // kalo isLoggedin true dia bakal nambah 2 karena showMenuSudahLogin untuk
                                           // inputnya
                                           // selalu diambah 2 dari yang sebenarnya
-                            choice += 2;
+                            choice += 3;
                         }
                         switch (choice) {
-
-                            case 9:
+                            
+                            case 10:
                                 if (isLoggedIn) {
+                                    isLoggedIn = false;
                                     break;
                                 }
                             case 6:
