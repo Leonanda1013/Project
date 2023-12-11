@@ -70,7 +70,7 @@ public class main {
         while (true) {
             System.out.println("██████████████████████████████████████");
             System.out.println("██                                  ██");
-            System.out.println("██ Selamat datang di Vinluna Cinema ██");
+            System.out.println("██" + red + " Selamat datang di Vinluna Cinema"+ reset +" ██");
             System.out.println("██                                  ██");
             System.out.println("██████████████████████████████████████");
             System.out.println();
