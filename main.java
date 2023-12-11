@@ -4,6 +4,12 @@ import java.util.Map;
 
 public class main {
 
+    //add color
+    static String green = "\033[32m";
+    static String reset = "\u001B[0m";
+    static String white = "\033[37m";
+    static String red = "\033[31m";
+    //
     static Scanner sc = new Scanner(System.in);
     static Scanner scanner = new Scanner(System.in);
     static boolean isLoggedIn = false;
@@ -48,7 +54,7 @@ public class main {
         judulFilm[1] = "Avangers";
 
         System.out.println(
-                "██╗   ██╗██╗███╗   ██╗██╗     ██╗   ██╗███╗   ██╗ █████╗      ██████╗██╗███╗   ██╗███████╗███╗   ███╗ █████╗ \r\n"
+                red + "██╗   ██╗██╗███╗   ██╗██╗     ██╗   ██╗███╗   ██╗ █████╗      ██████╗██╗███╗   ██╗███████╗███╗   ███╗ █████╗ \r\n"
                         + //
                         "██║   ██║██║████╗  ██║██║     ██║   ██║████╗  ██║██╔══██╗    ██╔════╝██║████╗  ██║██╔════╝████╗ ████║██╔══██╗\r\n"
                         + //
@@ -60,11 +66,11 @@ public class main {
                         + //
                         "  ╚═══╝  ╚═╝╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝  ╚═╝     ╚═════╝╚═╝╚═╝  ╚═══╝╚══════╝╚═╝     ╚═╝╚═╝  ╚═╝\r\n"
                         + //
-                        "                                                                                                             ");
+                        "                                                                                                             " + reset);
         while (true) {
             System.out.println("██████████████████████████████████████");
             System.out.println("██                                  ██");
-            System.out.println("██ Selamat datang di Vinluna Cinema ██");
+            System.out.println("██" + red + " Selamat datang di Vinluna Cinema"+ reset +" ██");
             System.out.println("██                                  ██");
             System.out.println("██████████████████████████████████████");
             System.out.println();
@@ -79,10 +85,10 @@ public class main {
 
                     while (true) {
                         System.out.println("=======================================");
-                        System.out.println("   _   ___  __  __ ___ _  _ \r\n" + //
+                        System.out.println(red + "   _   ___  __  __ ___ _  _ \r\n" + //
                                 "  /_\\ |   \\|  \\/  |_ _| \\| |\r\n" + //
                                 " / _ \\| |) | |\\/| || || .` |\r\n" + //
-                                "/_/ \\_\\___/|_|  |_|___|_|\\_|");
+                                "/_/ \\_\\___/|_|  |_|___|_|\\_|"+reset);
                         System.out.println(" ");
                         System.out.println("=======================================");
                         System.out.println("[1] Ubah Tanggal");
@@ -130,6 +136,7 @@ public class main {
                         switch (choice) {
                             case 3:
                                 if (!isLoggedIn) {
+                                    System.out.println("");
                                     Keluar = true;
                                     break;
 
@@ -818,7 +825,7 @@ public class main {
     }
 
     static void ubahTanggal() {
-        System.out.print("Masukkan Tanggal untuk Pemutaran & Hari ke depan : ");
+        System.out.print("Masukkan Tanggal untuk Pemutaran 7 Hari ke depan : ");
         adminInput = sc.nextInt();
         System.out.print("Masukkan Bulan : ");
         adminBulan = sc.nextInt();
