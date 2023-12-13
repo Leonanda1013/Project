@@ -85,10 +85,10 @@ public class main {
 
                     while (true) {
                         System.out.println("=======================================");
-                        System.out.println(red + "   _   ___  __  __ ___ _  _ \r\n" + //
-                                "  /_\\ |   \\|  \\/  |_ _| \\| |\r\n" + //
-                                " / _ \\| |) | |\\/| || || .` |\r\n" + //
-                                "/_/ \\_\\___/|_|  |_|___|_|\\_|"+reset);
+                        System.out.println(red + "      _   ___  __  __ ___ _  _ \r\n" + //
+                                "     /_\\ |   \\|  \\/  |_ _| \\| |\r\n" + //
+                                "    / _ \\| |) | |\\/| || || .` |\r\n" + //
+                                "   /_/ \\_\\___/|_|  |_|___|_|\\_|"+reset);
                         System.out.println(" ");
                         System.out.println("=======================================");
                         System.out.println("[1] Ubah Tanggal");
@@ -215,9 +215,9 @@ public class main {
                                 if (isLoggedIn && !isMember) {
                                     becomeMember();
                                 } else if (isMember) {
-                                    System.out.println("Anda sudah menjadi Member.");
+                                    System.out.println("\nAnda sudah menjadi Member.");
                                 } else {
-                                    System.out.println("Anda belum Login.");
+                                    System.out.println("\nAnda belum Login.");
                                 }
                                 break;
                             case 5:
@@ -229,7 +229,7 @@ public class main {
                                     }
 
                                 } else {
-                                    System.out.println("Anda belum Login.");
+                                    System.out.println("\nAnda belum Login.");
                                 }
                                 break;
                             case 1:
@@ -243,26 +243,27 @@ public class main {
                                 if (!isLoggedIn) {
                                     login();
                                 } else {
-                                    System.out.println("Anda sudah Login.");
+                                    System.out.println("\nAnda sudah Login.");
                                 }
                                 break;
                             case 9:
                                 if (isLoggedIn) {
-                                    System.out.println("Anda berhasil Logout.");
+                                    System.out.println("\nAnda berhasil Logout.");
                                     isLoggedIn = false;
                                 } else {
-                                    System.out.println("Anda belum Login.");
+                                    System.out.println("\nAnda belum Login.");
                                 }
                                 break;
                             case 4:
                                 if (isLoggedIn) {
 
                                     // Tambahkan fitur lainnya di sini untuk pengguna yang sudah login
-                                    System.out.println(" ___      _ _   _____ ___ _       _   \r\n" + //
-                                            "| _ ) ___| (_) |_   _|_ _| |_____| |_ \r\n" + //
-                                            "| _ \\/ -_) | |   | |  | || / / -_)  _|\r\n" + //
-                                            "|___/\\___|_|_|   |_| |___|_\\_\\___|\\__|");
-                                    System.out.println("");
+                                    System.out.println("==========================================");
+                                    System.out.println(red+"   ___      _ _   _____ ___ _       _   \r\n" + //
+                                            "  | _ ) ___| (_) |_   _|_ _| |_____| |_ \r\n" + //
+                                            "  | _ \\/ -_) | |   | |  | || / / -_)  _|\r\n" + //
+                                            "  |___/\\___|_|_|   |_| |___|_\\_\\___|\\__|"+reset);
+                                    System.out.println("\n==========================================");
 
                                     System.out.println("Daftar Film");
                                     for (int i = 0; i < judulFilm.length; i++) {
@@ -522,7 +523,7 @@ public class main {
                                         System.out.println("Status: Sudah Dibayar!\n");
                                     }
                                 } else {
-                                    System.out.println("Anda belum membayar\n");
+                                    System.out.println("\nAnda belum membayar\n");
                                 }
 
                         }
@@ -667,11 +668,12 @@ public class main {
     }
 
     static void showMenuBelumLogin() {
-        System.out.println(" _   _  ___   ___  _ __ \r\n" + //
-                "| | | |/ __| / _ \\| '__|\r\n" + //
-                "| |_| |\\__ \\|  __/| |   \r\n" + //
-                " \\__,_||___/ \\___||_|   \r\n" + //
-                "");
+        System.out.println("=======================================");
+        System.out.println(red+"    _   _  ___   ___  _ __ \r\n" + //
+                "   | | | |/ __| / _ \\| '__|\r\n" + //
+                "   | |_| |\\__ \\|  __/| |   \r\n" + //
+                "    \\__,_||___/ \\___||_|   \r\n" + //
+                ""+reset);
         System.out.println("=======================================");
         System.out.println("[1] Registrasi");
         System.out.println("[2] Login");
