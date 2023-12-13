@@ -4,7 +4,7 @@ import java.util.Map;
 
 public class main {
 
-    //add color
+    // add color
     static String green = "\033[32m";
     static String reset = "\u001B[0m";
     static String white = "\033[37m";
@@ -66,11 +66,12 @@ public class main {
                         + //
                         "  ╚═══╝  ╚═╝╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝  ╚═╝     ╚═════╝╚═╝╚═╝  ╚═══╝╚══════╝╚═╝     ╚═╝╚═╝  ╚═╝\r\n"
                         + //
-                        "                                                                                                             " + reset);
+                        "                                                                                                             "
+                        + reset);
         while (true) {
             System.out.println("██████████████████████████████████████");
             System.out.println("██                                  ██");
-            System.out.println("██" + red + " Selamat datang di Vinluna Cinema"+ reset +" ██");
+            System.out.println("██" + red + " Selamat datang di Vinluna Cinema" + reset + " ██");
             System.out.println("██                                  ██");
             System.out.println("██████████████████████████████████████");
             System.out.println();
@@ -88,7 +89,7 @@ public class main {
                         System.out.println(red + "   _   ___  __  __ ___ _  _ \r\n" + //
                                 "  /_\\ |   \\|  \\/  |_ _| \\| |\r\n" + //
                                 " / _ \\| |) | |\\/| || || .` |\r\n" + //
-                                "/_/ \\_\\___/|_|  |_|___|_|\\_|"+reset);
+                                "/_/ \\_\\___/|_|  |_|___|_|\\_|" + reset);
                         System.out.println(" ");
                         System.out.println("=======================================");
                         System.out.println("[1] Ubah Tanggal");
@@ -351,11 +352,11 @@ public class main {
                                     // Deklarasi Variabel
                                     int ubahbaris = 0;
                                     String[][] kursi = {
-                                            { green+"A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10" },
+                                            { green + "A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10" },
                                             { "B1", "B2", "B3", "B4", "B5", "B6", "B7", "B8", "B9", "B10" },
                                             { "C1", "C2", "C3", "C4", "C5", "C6", "C7", "C8", "C9", "C10" },
                                             { "D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "D9", "D10" },
-                                            { "E1", "E2", "E3", "E4", "E5", "E6", "E7", "E8", "E9", "E10"+reset },
+                                            { "E1", "E2", "E3", "E4", "E5", "E6", "E7", "E8", "E9", "E10" + reset },
                                     };
 
                                     while (true) {
@@ -378,7 +379,7 @@ public class main {
 
                                                 // Reservasi kursi
                                                 ubahbaris = baris.charAt(0) - 'A'; // Konversi baris ke indeks array
-                                                kursi[ubahbaris][kolom] = red+"X"+green;
+                                                kursi[ubahbaris][kolom] = red + "X" + green;
                                             }
 
                                             // Menampilkan peta kursi setelah pemilihan
@@ -414,7 +415,8 @@ public class main {
                                                     // Reset semua perubahan jika memilih kursi dibatalkan
                                                     ubahbaris = 0;
                                                     kursi = new String[][] {
-                                                            {green+ "A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9",
+                                                            { green + "A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8",
+                                                                    "A9",
                                                                     "A10" },
                                                             { "B1", "B2", "B3", "B4", "B5", "B6", "B7", "B8", "B9",
                                                                     "B10" },
@@ -423,7 +425,7 @@ public class main {
                                                             { "D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "D9",
                                                                     "D10" },
                                                             { "E1", "E2", "E3", "E4", "E5", "E6", "E7", "E8", "E9",
-                                                                    "E10"+reset },
+                                                                    "E10" + reset },
                                                     };
                                                     continue;
                                                 }
@@ -439,11 +441,13 @@ public class main {
                                             // Reset semua perubahan jika memilih kursi dibatalkan
                                             ubahbaris = 0;
                                             kursi = new String[][] {
-                                                    { green+"A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10" +reset },
+                                                    { green + "A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9",
+                                                            "A10" + reset },
                                                     { "B1", "B2", "B3", "B4", "B5", "B6", "B7", "B8", "B9", "B10" },
                                                     { "C1", "C2", "C3", "C4", "C5", "C6", "C7", "C8", "C9", "C10" },
                                                     { "D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "D9", "D10" },
-                                                    { "E1", "E2", "E3", "E4", "E5", "E6", "E7", "E8", "E9", "E10"+reset },
+                                                    { "E1", "E2", "E3", "E4", "E5", "E6", "E7", "E8", "E9",
+                                                            "E10" + reset },
                                             };
                                             continue;
                                         } else {
@@ -644,7 +648,7 @@ public class main {
             int kolomAkhir) {
         for (int i = barisAwal.charAt(0) - 'A'; i <= barisAkhir.charAt(0) - 'A'; i++) {
             for (int j = kolomAwal; j <= kolomAkhir; j++) {
-                kursi[i][j] = red+"XX"+green; // Reservasi kursi
+                kursi[i][j] = red + "XX" + green; // Reservasi kursi
             }
         }
     }
@@ -654,7 +658,7 @@ public class main {
         jumlahTerisi = 0;
         for (int i = 0; i < kursi.length; i++) {
             for (int j = 0; j < kursi[i].length; j++) {
-                if (kursi[i][j].equals(red+"XX"+green)) {
+                if (kursi[i][j].equals(red + "XX" + green)) {
                     jumlahTerisi++;
                 }
             }
