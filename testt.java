@@ -2,9 +2,9 @@ import java.util.Scanner;
 import java.util.HashMap;
 import java.util.Map;
 
-public class main {
+public class testt {
 
-    //add color
+    // add color
     static String green = "\033[32m";
     static String reset = "\u001B[0m";
     static String white = "\033[37m";
@@ -66,11 +66,12 @@ public class main {
                         + //
                         "  ╚═══╝  ╚═╝╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝  ╚═╝     ╚═════╝╚═╝╚═╝  ╚═══╝╚══════╝╚═╝     ╚═╝╚═╝  ╚═╝\r\n"
                         + //
-                        "                                                                                                             " + reset);
+                        "                                                                                                             "
+                        + reset);
         while (true) {
             System.out.println("██████████████████████████████████████");
             System.out.println("██                                  ██");
-            System.out.println("██" + red + " Selamat datang di Vinluna Cinema"+ reset +" ██");
+            System.out.println("██ Selamat datang di Vinluna Cinema ██");
             System.out.println("██                                  ██");
             System.out.println("██████████████████████████████████████");
             System.out.println();
@@ -88,7 +89,7 @@ public class main {
                         System.out.println(red + "   _   ___  __  __ ___ _  _ \r\n" + //
                                 "  /_\\ |   \\|  \\/  |_ _| \\| |\r\n" + //
                                 " / _ \\| |) | |\\/| || || .` |\r\n" + //
-                                "/_/ \\_\\___/|_|  |_|___|_|\\_|"+reset);
+                                "/_/ \\_\\___/|_|  |_|___|_|\\_|" + reset);
                         System.out.println(" ");
                         System.out.println("=======================================");
                         System.out.println("[1] Ubah Tanggal");
@@ -158,6 +159,9 @@ public class main {
                                         System.out.println("Studio : " + inpuStudio);
                                         System.out.println("Jam : " + jam[inputJam - 1]);
                                         System.out.println("Jumlah Kursi : " + bnykKursi);
+                                        if (isMember) {
+                                            System.out.println("Diskon : 10% (member)");
+                                        }
                                         hargaTiket();
                                     }
                                     if (isSnackKeranjang) {
@@ -166,7 +170,11 @@ public class main {
                                         System.out.println("Item berhasil ditambahkan ke keranjang : " + itemName);
                                         System.out.println("Harga per Item : Rp." + itemPrice);
                                         System.out.println("Jumlah Item : " + quantity);
+                                        if (isMember) {
+                                            System.out.println("Diskon : 10% (member)");
+                                        }
                                         System.out.println("Total Biaya : Rp." + totalCost);
+
                                     }
                                     if (isTiketKeranjang || isSnackKeranjang) {
                                         if (!sudahBayarSnack) {
@@ -351,11 +359,11 @@ public class main {
                                     // Deklarasi Variabel
                                     int ubahbaris = 0;
                                     String[][] kursi = {
-                                            { green+"A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10" },
+                                            { "A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10" },
                                             { "B1", "B2", "B3", "B4", "B5", "B6", "B7", "B8", "B9", "B10" },
                                             { "C1", "C2", "C3", "C4", "C5", "C6", "C7", "C8", "C9", "C10" },
                                             { "D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "D9", "D10" },
-                                            { "E1", "E2", "E3", "E4", "E5", "E6", "E7", "E8", "E9", "E10"+reset },
+                                            { "E1", "E2", "E3", "E4", "E5", "E6", "E7", "E8", "E9", "E10" },
                                     };
 
                                     while (true) {
@@ -366,7 +374,8 @@ public class main {
 
                                         // Pemilihan kursi jika jumlah kursi <= 2
                                         if (bnykKursi <= 2) {
-                                            for (int k = 0; k < bnykKursi; k++) {
+                                            while (true) {
+
                                                 // Menampilkan peta kursi
                                                 tampilkanPetaKursi(kursi);
 
@@ -376,13 +385,21 @@ public class main {
                                                 // Input kolom dan validasi
                                                 int kolom = inputKolom(sc);
 
-                                                // Reservasi kursi
-                                                ubahbaris = baris.charAt(0) - 'A'; // Konversi baris ke indeks array
-                                                kursi[ubahbaris][kolom] = red+"X"+green;
-                                            }
+                                                if (kursi[ubahbaris][kolom].equals("X")) {
+                                                    continue;
+                                                } else {
+                                                    // Reservasi kursi
+                                                    ubahbaris = baris.charAt(0) - 'A'; // Konversi baris ke indeks array
+                                                    kursi[ubahbaris][kolom] = "X";
+                                                    tampilkanPetaKursi(kursi);
+                                                    hitungJumlahKursiTerisi(kursi);
+                                                    if (jumlahTerisi == bnykKursi) {
+                                                        break;
+                                                    }
 
-                                            // Menampilkan peta kursi setelah pemilihan
-                                            tampilkanPetaKursi(kursi);
+                                                }
+
+                                            }
                                         } else { // Pemilihan kursi jika jumlah kursi > 2
                                             while (true) {
                                                 // Menampilkan peta kursi
@@ -414,7 +431,7 @@ public class main {
                                                     // Reset semua perubahan jika memilih kursi dibatalkan
                                                     ubahbaris = 0;
                                                     kursi = new String[][] {
-                                                            {green+ "A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9",
+                                                            { "A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9",
                                                                     "A10" },
                                                             { "B1", "B2", "B3", "B4", "B5", "B6", "B7", "B8", "B9",
                                                                     "B10" },
@@ -423,7 +440,7 @@ public class main {
                                                             { "D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "D9",
                                                                     "D10" },
                                                             { "E1", "E2", "E3", "E4", "E5", "E6", "E7", "E8", "E9",
-                                                                    "E10"+reset },
+                                                                    "E10" },
                                                     };
                                                     continue;
                                                 }
@@ -439,11 +456,11 @@ public class main {
                                             // Reset semua perubahan jika memilih kursi dibatalkan
                                             ubahbaris = 0;
                                             kursi = new String[][] {
-                                                    { green+"A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10" +reset },
+                                                    { "A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10" },
                                                     { "B1", "B2", "B3", "B4", "B5", "B6", "B7", "B8", "B9", "B10" },
                                                     { "C1", "C2", "C3", "C4", "C5", "C6", "C7", "C8", "C9", "C10" },
                                                     { "D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "D9", "D10" },
-                                                    { "E1", "E2", "E3", "E4", "E5", "E6", "E7", "E8", "E9", "E10"+reset },
+                                                    { "E1", "E2", "E3", "E4", "E5", "E6", "E7", "E8", "E9", "E10" },
                                             };
                                             continue;
                                         } else {
@@ -509,6 +526,9 @@ public class main {
                                         System.out.println("Studio : " + inpuStudio);
                                         System.out.println("Jam : " + jam[inputJam - 1]);
                                         System.out.println("Jumlah Kursi : " + bnykKursi);
+                                        if (isMember) {
+                                            System.out.println("Diskon : 10% (member)");
+                                        }
                                         hargaTiket();
                                         System.out.println("Status: Sudah Dibayar!\n");
                                     }
@@ -518,6 +538,9 @@ public class main {
                                         System.out.println("Item berhasil ditambahkan ke keranjang : " + itemName);
                                         System.out.println("Harga per Item : Rp." + itemPrice);
                                         System.out.println("Jumlah Item : " + quantity);
+                                        if (isMember) {
+                                            System.out.println("Diskon : 10% (member)");
+                                        }
                                         System.out.println("Total Biaya : Rp." + totalCost);
                                         System.out.println("Status: Sudah Dibayar!\n");
                                     }
@@ -644,7 +667,8 @@ public class main {
             int kolomAkhir) {
         for (int i = barisAwal.charAt(0) - 'A'; i <= barisAkhir.charAt(0) - 'A'; i++) {
             for (int j = kolomAwal; j <= kolomAkhir; j++) {
-                kursi[i][j] = red+"XX"+green; // Reservasi kursi
+
+                kursi[i][j] = "XX"; // Reservasi kursi
             }
         }
     }
@@ -654,8 +678,14 @@ public class main {
         jumlahTerisi = 0;
         for (int i = 0; i < kursi.length; i++) {
             for (int j = 0; j < kursi[i].length; j++) {
-                if (kursi[i][j].equals(red+"XX"+green)) {
-                    jumlahTerisi++;
+                if (bnykKursi <= 2) {
+                    if (kursi[i][j].equals("X")) {
+                        jumlahTerisi++;
+                    }
+                } else {
+                    if (kursi[i][j].equals("XX")) {
+                        jumlahTerisi++;
+                    }
                 }
             }
         }
@@ -791,6 +821,7 @@ public class main {
             System.out.println("Item berhasil ditambahkan ke Keranjang : " + name);
             System.out.println("Harga per Item : Rp." + price);
             System.out.println("Jumlah Item : " + qty);
+            System.out.println("Diskon : 10% (member)");
             System.out.println("Total Biaya : Rp." + totalCost);
             // keranjang += totalCost;
             // Add the item to the respective cart
