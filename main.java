@@ -159,7 +159,14 @@ public class main {
                                         System.out.println("Studio : " + inpuStudio);
                                         System.out.println("Jam : " + jam[inputJam - 1]);
                                         System.out.println("Jumlah Kursi : " + bnykKursi);
+                                        if (isMember) {
+                                            System.out.println("Diskon : 10% (member)");
+
+                                        }
                                         hargaTiket();
+                                        if (isMember) {
+                                            System.out.println("Diskon : " + hargaTiketTotal * 10 / 100);
+                                        }
                                     }
                                     if (isSnackKeranjang) {
 
@@ -167,7 +174,14 @@ public class main {
                                         System.out.println("Item berhasil ditambahkan ke keranjang : " + itemName);
                                         System.out.println("Harga per Item : Rp." + itemPrice);
                                         System.out.println("Jumlah Item : " + quantity);
+                                        if (isMember) {
+                                            System.out.println("Diskon : 10% (member)");
+
+                                        }
                                         System.out.println("Total Biaya : Rp." + totalCost);
+                                        if (isMember) {
+                                            System.out.println("Diskon : " + 10 / 100 * totalCost);
+                                        }
                                     }
                                     if (isTiketKeranjang || isSnackKeranjang) {
                                         if (!sudahBayarSnack) {
