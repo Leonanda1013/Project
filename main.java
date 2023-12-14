@@ -68,14 +68,13 @@ public class main {
                         + //
                         "                                                                                                             " + reset);
         while (true) {
-            System.out.println("██████████████████████████████████████");
-            System.out.println("██                                  ██");
-            System.out.println("██" + red + " Selamat datang di Vinluna Cinema"+ reset +" ██");
-            System.out.println("██                                  ██");
-            System.out.println("██████████████████████████████████████");
-            System.out.println();
             while (true) {
-
+                System.out.println("██████████████████████████████████████");
+                System.out.println("██                                  ██");
+                System.out.println("██" + red + " Selamat datang di Vinluna Cinema"+ reset +" ██");
+                System.out.println("██                                  ██");
+                System.out.println("██████████████████████████████████████");
+                System.out.println();
                 System.out.println("[1] Admin");
                 System.out.println("[2] User");
                 System.out.print("Pilih Opsi (1 - 2) : ");
@@ -484,12 +483,12 @@ public class main {
                                             sudahBayarTiket = true;
                                             fiturTiket = true;
                                         } else {
-                                            System.out.println("Metode pembayaran tidak valid.\n");
+                                            System.out.println("\nMetode pembayaran tidak valid.\n");
 
                                         }
 
                                     } else if (masukBayar == 2) {
-                                        System.out.println("Pesanan Telah Masuk pada Keranjang\n");
+                                        System.out.println("\nPesanan Telah Masuk pada Keranjang");
                                         isTiketKeranjang = true;
 
                                     } else {
@@ -951,11 +950,11 @@ public class main {
         if (masukBayar == 1) {
             pembayaranLangsung();
         } else if (masukBayar == 2) {
-            System.out.println("Pesanan Telah Masuk pada Keranjang");
+            System.out.println("\nPesanan Telah Masuk pada Keranjang");
             System.out.println(" ");
             isPesanKeranjang = true;
         } else {
-            System.out.println("Input Salah");
+            System.out.println("\nInput Salah");
         }
     }
 
