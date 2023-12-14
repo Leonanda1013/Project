@@ -739,7 +739,7 @@ public class main {
 
     static void beliSnackMinuman() {
         System.out.println(" ");
-        System.out.println("Daftar Snack dan Minuman :");
+        System.out.println("▄▀▄ Snack dan Minuman ▄▀▄");
         System.out.println("[1] Popcorn - Rp. 15,000");
         System.out.println("[2] Nachos - Rp. 12,000");
         System.out.println("[3] Cola - Rp. 8,000");
@@ -923,12 +923,12 @@ public class main {
         String norek;
         if (metodeBayar == 1 || metodeBayar == 2) {
             if (fiturSnack) {
-                System.out.println("Harga Snack: " + totalCost);
+                System.out.println("Harga Snack: Rp." + totalCost);
                 fiturSnack = false;
                 sudahBayarSnack = true;
                 sudahBayarTiket = true;
             } else if (fiturKeranjang) {
-                System.out.println("Harga total: " + keranjang);
+                System.out.println("Harga total: Rp." + keranjang);
                 fiturKeranjang = false;
             }
 
